@@ -226,7 +226,7 @@ if( reset)begin
 						else begin
 							if(ne)begin
 								if(bc==0)begin
-									scl_int=1'b0; sda_int=1'b1; NB=NB-1; state=10;
+									scl_int=1'b0; sda_int=1'b1; NB=NB-1; state=10; //go to next state sack
 								end //bc==0
 								else begin
 									scl_int=1'b0; state=9;
@@ -239,6 +239,100 @@ if( reset)begin
 					end
 
 		end //case 9
+		//sack
+		10:begin if(pe)begin 
+					scl_int=1'b1; state=10;
+				end //if pe
+				else begin
+					if (rbit)begin
+						if(sda!=1'b0)begin
+							ack_e=1'b1; state=10;
+						end //sda
+						else begin
+							ack_e=1'b0; state=9; //go back to wr
+						end //else sda
+					end //rbit
+					else begin
+						if (ne)begin
+							if(NB>0)begin
+								scl_int=1'b0; sda_int=1'b1; bc=8; RTX=dwr; state=9; //go back to state wr
+							end //NB
+							else begin
+								scl_int=1'b0; sda_int=1'b0; state=11; //go to next state stop
+							end //else NB
+						end //if ne
+						else state=10; //go back to wr
+					end//else rbit
+				end //else pe
+
+		 end //case10
+		 //stop
+		 11:begin if (pe)begin
+		 			scl_int=1'b1; state=11; //go back to stop
+		 		end //pe
+		 		else begin
+		 			if (rbit)begin
+		 				sda_int=1'b1; state=11; //go back to stop
+		 			end //if rbit
+		 			else begin
+		 				if(ne)begin
+		 					scl_int=1'b1; sda_int=1'b1; drd=0; ack_e=1'b0; done=1; state=0; //go to state waiting=0 //check drd!!! and check DONE!!!
+		 				end
+		 				else state=11; //go back to stop
+		 			end //else rbit
+		 		end//else pe
+		 	end //case11
+		 //rd
+		 12:begin if (pe)begin
+		 			scl_int=1'b1; state=12;
+		 		end //if pe
+		 		else begin
+		 			if(rbit)begin
+		 				if(bc>0)begin
+		 					RRX[bc-1]=sda; bc=bc-1; state=12; //go back to rd // check WHAT IS RRX!!!
+		 				end//if bc
+		 				else state=12; //go back to rd
+		 			end //if rbit
+		 			else begin
+		 				if(ne)begin
+		 					if(bc==0)begin
+		 						scl_int=1'b0; drd=RRX; NB=NB-1; RRX=1'b0; state=13; //go to next state mack // WHAT IS RRX!!!
+		 					end //if bc
+		 					else begin	
+		 						scl_int=1'b0; state=12; //go back to rd
+		 					end //else bc
+		 				end //if ne
+		 				else state=12; //go back to rd
+		 			end //else rbit
+		 		end //else pe
+		 end //case12
+		 //mack
+		 13:begin if (wbit)begin
+		 			if(NB>0)begin
+		 				sda_int=1'b0; state=13; //go back to mack
+		 			end //if NB
+		 			else begin
+		 				sda_int=1'b1; state=13; //go back to mack
+		 			end //else NB
+		 		end //if wbtit
+		 		else begin
+		 			if (pe) begin
+		 				scl_int=1'b1; state=13; //go back to mack
+		 			end //if pe
+		 			else begin
+		 				if(ne)begin
+		 					if(NB>0)begin
+		 						scl_int=1'b0; bc=8; sda_int=1'b1; state=12; //go back to previous state rd
+		 					end //if NB
+		 					else begin
+		 						scl_int=1'b0; bc=8; sda_int=1'b0; state=11; //go back to stop
+		 					end //else NB
+		 				end //if ne
+		 				else state=13;
+		 			end //else pe
+		 		end //else wbit
+
+		 end //case13
 		endcase
 end
 end //begin clk
