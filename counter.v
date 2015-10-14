@@ -2,7 +2,7 @@
 
 //initialize inputs and output
 
-module I2c_second();
+module counter();
 always @(posedge clk)
 begin
 if( reset)begin
