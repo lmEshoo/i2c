@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 //initialize inputs and output
 
 module I2c_first();
