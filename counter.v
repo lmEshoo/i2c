@@ -8,7 +8,7 @@ begin
 if( reset)begin
 	counter=1'b0;
 	case(state)
-	0: begin if(state==waiting)begin
+	0: begin if(state==0)begin //0=waiting
 				counter=1'b0; state=0;
 			end //if state
 			else begin
