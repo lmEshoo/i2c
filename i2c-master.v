@@ -28,6 +28,7 @@ input [7:0] R_Pointer;
 input reset;
 
 output [7:0] drd;
+output [7:0] dwr;
 output ack_e;
 output ready, done;
 inout scl;
