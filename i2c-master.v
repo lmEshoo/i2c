@@ -45,6 +45,31 @@ reg wbit=0;
 reg [3:0] bc=0;
 reg R_W=0;
 
+//counter
+always @(posedge clk)
+begin
+if( reset)begin
+	counter=1'b0;
+	case(state)
+	0: begin if(state==0)begin //0=waiting
+				counter=1'b0; state=0;
+			end //if state
+			else begin
+				if(stretch=1'b0)begin
+					counter=counter+1; state=0;
+				end //stretch
+				else begin
+					state=0;
+				end //else stretch
+			end //else state
+
+	end //case0
+	endcase
+
+end// if reset
+end //always
+
+//master stuff
 always @(posedge clk)
 begin
 if( reset)begin
