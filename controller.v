@@ -3,6 +3,9 @@
 //check case 12?
 
 module controller();
+
+wire go;
+assign go = (state == 1 || state==7);
 always @(posedge clk)
 begin
 if( reset)begin
@@ -15,7 +18,7 @@ if( reset)begin
 			else state=0;
 	end //case0
 	//S1
-	1: state=2; //go to next state:S2
+	1: begin state=2; end //go to next state:S2
 	//S2
 	2: begin if(ready)begin
 				dwr=conifg_first_byte; state=3; //go to next state:S3
@@ -48,7 +51,7 @@ if( reset)begin
 			else state=6; //go back to S6
 	end //case6
 	//S7
-	7: state=8; //go to next state:S8
+	7: begin state=8; end  //go to next state:S8
 	//S8
 	8: begin if(ready)begin
 				data[15:8]=drd; state=9; //go to next state:S9
