@@ -38,62 +38,78 @@ reg state=0;
 reg [7:0] RTX=0;
 reg [7:0] R=0;
 reg [5:0] NB=0;
-reg rbit=0;
-reg ne=0;
-reg pe=0;
-reg wbit=0;
+wire rbit;
+wire ne;
+wire pe;
+wire wbit;
 reg [3:0] bc=0;
 reg R_W=0;
+wire scl_int, scl, sda_int, sda;
+
+assign scl = (scl_int) ? 1'bz: 1'b0;
+assign sda = (sda_int) ? 1'bz: 1'b0;
+
+assign ne = (counter ==0);
+assign wbit = (counter ==10'b010000000000);
+assign pe = (counter ==10'b100000000000);
+assign rbit = (counter ==10'b110000000000);
+
+assign ready = (state==5 && R_W==0 && wbit==1); //sack2 
+assign ready = (state==10 && NB>0  && wbit==1); //sack 
+assign ready = (state==13  && wbit==1); //mack 
 
 //counter
 always @(posedge clk)
 begin
 if( reset)begin
-	counter=1'b0;
-	case(state)
-	0: begin if(state==0)begin //0=waiting
-				counter=1'b0; state=0;
+	counter=1'b0; state2=0;
+end// if reset
+
+	case(state2)
+	0: begin if(state2==0)begin //0=waiting
+				counter=1'b0; state2=0;
 			end //if state
 			else begin
 				if(stretch=1'b0)begin
-					counter=counter+1; state=0;
+					counter=counter+1; state2=0;
 				end //stretch
 				else begin
-					state=0;
+					state2=0;
 				end //else stretch
 			end //else state
 
 	end //case0
 	endcase
 
-end// if reset
 end //always
 
 //i2c first one
 always @(posedge clk)
 begin
 if( reset)begin
-	stretch=1'b0; Q3=1'b0;
-	case(state)
+	stretch=1'b0; Q3=1'b0; state1=0;
+end// if reset
+
+	case(state1)
 	0: begin if(pe)begin
-				Q3=1'b1; state=0;
+				Q3=1'b1; state1=0;
 			end //ifpe
 			else begin
 				if(rbit)begin
-					Q3=1'b0; state=0;
+					Q3=1'b0; state1=0;
 				end //if rbit
 				else begin
 					if(Q3)begin
 						if(scl)begin
-							stretch=1'b0; state=0;
+							stretch=1'b0; state1=0;
 						end //if scl
 						else begin
-							stretch=1'b1; state=0;
+							stretch=1'b1; state1=0;
 						end //else scl
 					end //if Q3
 					else begin
 						Q3=1'b0;
-						state=0;
+						state1=0;
 					end //else Q3
 				end //else rbit
 			end //endpe
@@ -101,15 +117,14 @@ if( reset)begin
 	end //case0
 	endcase
 
-end// if reset
 end //always
 
 //master stuff
 always @(posedge clk)
 begin
 if( reset)begin
-		scl_int=1'b1; sda_int=1'b1; drd=1'b0; done=1'b1; ack_e=1'b0; state=0;
-	
+	scl_int=1'b1; sda_int=1'b1; drd=1'b0; done=1'b1; ack_e=1'b0; state=0;
+end
 		case(state)
 		//waiting
 		0:begin if(go&&idle)begin
@@ -394,6 +409,6 @@ if( reset)begin
 
 		 end //case13
 		endcase
-end
+
 end //begin clk
 endmodule
