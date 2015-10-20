@@ -2,7 +2,10 @@
 //initialize inputs and output
 //check case 12?
 
-module controller();
+module controller(go,done, ready, rw, N_Byte, dev_add, dwr, R_Pointer, drd, ack_e);
+input ready, done,ack_e;
+input drd[7:0];
+output go, rw, N_Byte[5:0], dev_add[6:0], dwr[7:0], R_Pointer[7:0];
 
 wire go;
 assign go = (state == 1 || state==7);
