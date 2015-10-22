@@ -1,11 +1,40 @@
 `timescale 1ns / 1ps
 //initialize inputs and output
 //check case 12?
+//LCDI
 
 module controller(go,done, ready, rw, N_Byte, dev_add, dwr, R_Pointer, drd, ack_e);
 input ready, done,ack_e;
 input drd[7:0];
 output go, rw, N_Byte[5:0], dev_add[6:0], dwr[7:0], R_Pointer[7:0];
+
+//LCDI Initials
+//do we need dataout and control?
+output [3:0] dataout;
+output [2:0]control;
+reg [0:7]Din;
+reg [5:0] WADD;
+reg W ;
+LCDI Display(clk, Din,W,WADD, dataout, control);
+initial begin 
+	count<=0;
+	W<=0;
+end
+
+//binary to BCD
+reg [3:0] Dt2,Dt1;
+reg [7:0] PR;
+reg [1:0] s=0;
+always @(posedge clk)begin
+	case (s)
+		0:if(P[7]) begin PR<= -P; Dt2 <= 0; Dt1<=0; s <= 1; end
+		    else begin PR<= P ; Dt2 <= 0; Dt1<=0; s <= 1; end
+		2:if(PR > 9)begin PR <= PR - 10; Dt1 <= Dt1 + 1; end
+		   else begin s <= 0;D2 <= Dt2; D1 <= Dt1; 
+		                   D0 <= PR[3:0] ; end
+		default: s <= 0;
+	endcase
+end
 
 
 wire go;
@@ -90,6 +119,7 @@ if( reset)begin
 	//S12
 	12:begin
 		//Convert T to BCD and display it
+		W<=1; WADD<=5'b000000; Din={D1,D0}; 
 	end //case12
 
 	endcase
