@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=H:\bananas\impact.xsl
+OUTFILE=H:\bananas\impact.xsl
+FAMILY=Multiple
+PART=Multiple
+WORKINGDIR=H:\bananas
+LICENSE=iMPACT
+USER_INFO=iMPACT

@@ -1,0 +1,4 @@
+verilog work "../lab2/LCDI.v"
+verilog work "../lab2/i2cMaster.v"
+verilog work "../lab2/controller.v"
+verilog work "../lab2/TOP.v"

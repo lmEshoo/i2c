@@ -1,0 +1,4 @@
+MO LCDI NULL ../lab2/LCDI.v vlg44/_l_c_d_i.bin 1445564824
+MO i2cMaster NULL ../lab2/i2cMaster.v vlg36/i2c_master.bin 1445564824
+MO TOP NULL ../lab2/TOP.v vlg0F/_t_o_p.bin 1445564824
+MO controller NULL ../lab2/controller.v vlg54/controller.bin 1445564824
