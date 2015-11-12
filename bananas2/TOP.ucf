@@ -1,0 +1,25 @@
+NET "control[2]" LOC = "M18" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ; 
+NET "control[1]" LOC = "L18" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ; 
+NET "control[0]" LOC = "L17" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ; 
+# The LCD four-bit data interface is shared with the StrataFlash. 
+NET "dataout[0]" LOC = "R15" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ; 
+NET "dataout[1]" LOC = "R16" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ; 
+NET "dataout[2]" LOC = "P17" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ; 
+NET "dataout[3]" LOC = "M15" | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ; 
+ 
+ 
+NET "clk"     LOC = "C9" | IOSTANDARD = LVCMOS33;
+#NET "reset"     LOC = "RESET" | IOSTANDARD = LVCMOS33;
+NET "reset" LOC = "K17" | IOSTANDARD = LVTTL | PULLDOWN ; 
+
+NET "scl" LOC = "C5"   | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+NET "sda" LOC = "D5"  | IOSTANDARD = LVCMOS33 | DRIVE = 4 | SLEW = SLOW ;
+NET "led[0]" LOC = "F12" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+NET "led[1]" LOC = "E12"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8  ;
+NET "led[2]" LOC = "E11"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8  ;
+NET "led[3]" LOC = "F11"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8  ;
+
+NET "led1[0]" LOC = "C11" | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8 ;
+NET "led1[1]" LOC = "D11"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8  ;
+NET "led1[2]" LOC = "E9"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8  ;
+NET "led1[3]" LOC = "F9"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8  ;

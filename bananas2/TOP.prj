@@ -1,0 +1,4 @@
+verilog work "LCDI.v"
+verilog work "i2cMaster.v"
+verilog work "controller.v"
+verilog work "TOP.v"
