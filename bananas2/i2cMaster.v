@@ -85,7 +85,6 @@ begin
 				end
 		end
 end
-
 //i2c first one//////////////////////////////////////////////
 always @ (posedge clk)
 begin
@@ -107,7 +106,6 @@ begin
 					stretch <= 1'b0;
 				end
 end
-
 ///////////////////////////////////////////////
 assign led=state;
 //master stuff
@@ -333,7 +331,6 @@ else
 						else state<=10; //go back to wr
 					end//else rbit
 				end //else pe
-
 		 end //case10
 		 //stop
 		 11:begin if (pe)begin
@@ -400,7 +397,6 @@ else
 		 				else state<=13;
 		 			end //else pe
 		 		end //else wbit
-
 		 end //case13
 		endcase
 
