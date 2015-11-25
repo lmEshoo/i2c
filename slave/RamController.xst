@@ -1,0 +1,5 @@
+set -tmpdir "H:/slave/xst/projnav.tmp"
+set -xsthdpdir "H:/slave/xst"
+elaborate
+-ifn RamController.prj
+-ifmt mixed

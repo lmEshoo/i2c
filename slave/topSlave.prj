@@ -1,0 +1,7 @@
+verilog work "Filter.v"
+verilog work "RamController.v"
+verilog work "RAM.v"
+verilog work "LCDI.v"
+verilog work "I2CSlave.v"
+verilog work "DeBouncer.v"
+verilog work "topSlave.v"

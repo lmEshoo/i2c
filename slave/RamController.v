@@ -18,14 +18,16 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module RamController(E,clk, data, WADD, DIN, W);
+module RamController(E,clk, data, WADD, DIN, W, led1);
 input clk, E ;
 input [3:0] data;
 output reg [4:0] WADD=0;
-output reg [7:0] DIN;
-output reg W;
+output reg [7:0] DIN=0;
+output reg W=0;
 reg state;
 reg reset=0;
+output [4:0] led1;
+assign led1=state;
 
 always @ (posedge clk)
 begin

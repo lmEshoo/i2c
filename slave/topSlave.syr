@@ -1,0 +1,676 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.19 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Reading design: topSlave.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "topSlave.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "topSlave"
+Output Format                      : NGC
+Target Device                      : xc3s500e-5-fg320
+
+---- Source Options
+Top Module Name                    : topSlave
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "Filter.v" in library work
+Compiling verilog file "RamController.v" in library work
+Module <Filter> compiled
+Compiling verilog file "RAM.v" in library work
+Module <RamController> compiled
+Compiling verilog file "LCDI.v" in library work
+Module <RAM> compiled
+Compiling verilog file "I2CSlave.v" in library work
+Module <LCDI> compiled
+Compiling verilog file "DeBouncer.v" in library work
+Module <I2CSlave> compiled
+Compiling verilog file "topSlave.v" in library work
+Module <DeBouncer> compiled
+Module <topSlave> compiled
+No errors in compilation
+Analysis of file <"topSlave.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <topSlave> in library <work>.
+
+Analyzing hierarchy for module <LCDI> in library <work>.
+
+Analyzing hierarchy for module <RamController> in library <work>.
+
+Analyzing hierarchy for module <RAM> in library <work>.
+
+Analyzing hierarchy for module <DeBouncer> in library <work>.
+
+Analyzing hierarchy for module <I2CSlave> in library <work>.
+
+Analyzing hierarchy for module <Filter> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <topSlave>.
+Module <topSlave> is correct for synthesis.
+ 
+Analyzing module <LCDI> in library <work>.
+WARNING:Xst:905 - "LCDI.v" line 42: One or more signals are missing in the sensitivity list of always block. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <LCDRAM>
+Module <LCDI> is correct for synthesis.
+ 
+Analyzing module <RamController> in library <work>.
+Module <RamController> is correct for synthesis.
+ 
+Analyzing module <RAM> in library <work>.
+WARNING:Xst:2319 - "RAM.v" line 34: Signal RAM in initial block is partially initialized. The initialization will be ignored.
+Module <RAM> is correct for synthesis.
+ 
+Analyzing module <DeBouncer> in library <work>.
+Module <DeBouncer> is correct for synthesis.
+ 
+Analyzing module <I2CSlave> in library <work>.
+Module <I2CSlave> is correct for synthesis.
+ 
+Analyzing module <Filter> in library <work>.
+Module <Filter> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <control<0>> in unit <LCDI> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <R> in unit <LCDI> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <WADD> in unit <RamController> has a constant value of 00000 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <sda_int> in unit <I2CSlave> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <scl_int> in unit <I2CSlave> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <Nb> in unit <I2CSlave> has a constant value of 0 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <LCDI>.
+    Related source file is "LCDI.v".
+    Found 32x8-bit dual-port RAM <Mram_LCDRAM> for signal <LCDRAM>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 44                                             |
+    | Transitions        | 87                                             |
+    | Inputs             | 8                                              |
+    | Outputs            | 44                                             |
+    | Clock              | clk                       (rising_edge)        |
+    | Power Up State     | 000000                                         |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 2-bit register for signal <control<2:1>>.
+    Found 4-bit register for signal <dataout>.
+    Found 5-bit register for signal <add>.
+    Found 5-bit adder for signal <add$addsub0000> created at line 137.
+    Found 26-bit register for signal <delay>.
+    Found 26-bit subtractor for signal <delay$share0000> created at line 47.
+    Found 8-bit register for signal <DR>.
+    Found 3-bit register for signal <sel>.
+    Found 3-bit subtractor for signal <sel$addsub0000> created at line 93.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 RAM(s).
+	inferred  48 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+Unit <LCDI> synthesized.
+
+
+Synthesizing Unit <RamController>.
+    Related source file is "RamController.v".
+WARNING:Xst:1305 - Output <DIN<3:0>> is never assigned. Tied to value 0000.
+WARNING:Xst:1305 - Output <W> is never assigned. Tied to value 0.
+WARNING:Xst:653 - Signal <reset> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+    Found 4-bit register for signal <DIN<7:4>>.
+    Found 1-bit register for signal <state>.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+Unit <RamController> synthesized.
+
+
+Synthesizing Unit <RAM>.
+    Related source file is "RAM.v".
+    Found 32x8-bit dual-port RAM <Mram_RAM> for signal <RAM>.
+    Found 8-bit register for signal <DOUT>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   8 D-type flip-flop(s).
+Unit <RAM> synthesized.
+
+
+Synthesizing Unit <DeBouncer>.
+    Related source file is "DeBouncer.v".
+WARNING:Xst:1305 - Output <E> is never assigned. Tied to value 0.
+    Found 1-bit register for signal <SDC>.
+    Found 1-bit subtractor for signal <SDC$addsub0000> created at line 37.
+    Found 1-bit register for signal <state>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <DeBouncer> synthesized.
+
+
+Synthesizing Unit <Filter>.
+    Related source file is "Filter.v".
+WARNING:Xst:1780 - Signal <A01> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 1-bit register for signal <fsig>.
+    Found 8-bit register for signal <fR>.
+    Found 1-bit register for signal <state>.
+    Summary:
+	inferred  10 D-type flip-flop(s).
+Unit <Filter> synthesized.
+
+
+Synthesizing Unit <I2CSlave>.
+    Related source file is "I2CSlave.v".
+WARNING:Xst:1305 - Output <addr> is never assigned. Tied to value 00000.
+WARNING:Xst:1305 - Output <datar> is never assigned. Tied to value 00000000.
+WARNING:Xst:1305 - Output <W> is never assigned. Tied to value 0.
+WARNING:Xst:647 - Input <DOUT> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <sda_int> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <scl_int> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <my_addr> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <fsda> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <fR> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <dir> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <cpe> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <cne> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <Txr> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <RAM> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <Nb> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 1-bit register for signal <state>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <I2CSlave> synthesized.
+
+
+Synthesizing Unit <topSlave>.
+    Related source file is "topSlave.v".
+WARNING:Xst:647 - Input <Pb1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:653 - Signal <spb> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:1780 - Signal <addr> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+Unit <topSlave> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 32x8-bit dual-port RAM                                : 2
+# Adders/Subtractors                                   : 3
+ 26-bit subtractor                                     : 1
+ 3-bit subtractor                                      : 1
+ 5-bit adder                                           : 1
+# Registers                                            : 20
+ 1-bit register                                        : 12
+ 26-bit register                                       : 1
+ 3-bit register                                        : 1
+ 4-bit register                                        : 1
+ 5-bit register                                        : 1
+ 8-bit register                                        : 4
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <lcd/state/FSM> on signal <state[1:44]> with one-hot encoding.
+--------------------------------------------------------
+ State  | Encoding
+--------------------------------------------------------
+ 000000 | 00000000000000000000000000000000000000000001
+ 000001 | 00000000000000000000000000000000000000000010
+ 000010 | 00000000000000000000000000000000000000000100
+ 000011 | 00000000000000000000000000000000000000001000
+ 000100 | 00000000000000000000000000000000000000010000
+ 000101 | 00000000000000000000000000000000000000100000
+ 000110 | 00000000000000000000000000000000000001000000
+ 000111 | 00000000000000000000000000000000000010000000
+ 001000 | 00000000000000000000000000000000000100000000
+ 001001 | 00000000000000000000000000000000001000000000
+ 001010 | 00000000000000000000000000000000010000000000
+ 001011 | 00000000000000000000000000000001000000000000
+ 001100 | 00000000000000000000000000000010000000000000
+ 001101 | 00000000000000000000000000000100000000000000
+ 001110 | 00000000000000000000000000001000000000000000
+ 001111 | 00000000000000000000000000010000000000000000
+ 010000 | 00000000000000000000000000100000000000000000
+ 010001 | 00000000000000000000000001000000000000000000
+ 010010 | 00000000000000000000000010000000000000000000
+ 010011 | 00000000000000000000000100000000000000000000
+ 010100 | 00000000000000000000000000000000100000000000
+ 010101 | 00000000000000000000001000000000000000000000
+ 010110 | 00000000000000000000010000000000000000000000
+ 010111 | 00000000000000000000100000000000000000000000
+ 011000 | 00000000000000000001000000000000000000000000
+ 011001 | 00000000000000000010000000000000000000000000
+ 011010 | 00000000000000000100000000000000000000000000
+ 011011 | 00000000000000001000000000000000000000000000
+ 011100 | 00000000000000010000000000000000000000000000
+ 011101 | 00000000000000100000000000000000000000000000
+ 011110 | 00000000000001000000000000000000000000000000
+ 011111 | 00000000000010000000000000000000000000000000
+ 100000 | 00000000000100000000000000000000000000000000
+ 100001 | 00000000001000000000000000000000000000000000
+ 100010 | 00000000010000000000000000000000000000000000
+ 100011 | 00000000100000000000000000000000000000000000
+ 100100 | 00000001000000000000000000000000000000000000
+ 100101 | 00000010000000000000000000000000000000000000
+ 100110 | 00000100000000000000000000000000000000000000
+ 100111 | 00001000000000000000000000000000000000000000
+ 101000 | 00010000000000000000000000000000000000000000
+ 101001 | 00100000000000000000000000000000000000000000
+ 101010 | 01000000000000000000000000000000000000000000
+ 101011 | 10000000000000000000000000000000000000000000
+--------------------------------------------------------
+WARNING:Xst:1290 - Hierarchical block <ramm> is unconnected in block <topSlave>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <debounce> is unconnected in block <topSlave>.
+   It will be removed from the design.
+WARNING:Xst:1426 - The value init of the FF/Latch state hinder the constant cleaning in the block data.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch state hinder the constant cleaning in the block CLOCK1.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1710 - FF/Latch <state> (without init value) has a constant value of 1 in block <ramCtrl>. This FF/Latch will be trimmed during the optimization process.
+
+Synthesizing (advanced) Unit <LCDI>.
+INFO:Xst:3231 - The small RAM <Mram_LCDRAM> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 8-bit                     |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <W>             | high     |
+    |     addrA          | connected to signal <WADD>          |          |
+    |     diA            | connected to signal <DIN>           |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 8-bit                     |          |
+    |     addrB          | connected to signal <add>           |          |
+    |     doB            | connected to signal <datain>        |          |
+    -----------------------------------------------------------------------
+Unit <LCDI> synthesized (advanced).
+
+Synthesizing (advanced) Unit <RAM>.
+INFO:Xst:3231 - The small RAM <Mram_RAM> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 8-bit                     |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <W>             | high     |
+    |     addrA          | connected to signal <WADD>          |          |
+    |     diA            | connected to signal <DIN>           |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 8-bit                     |          |
+    |     addrB          | connected to signal <RADD>          |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <RAM> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# RAMs                                                 : 2
+ 32x8-bit dual-port distributed RAM                    : 2
+# Adders/Subtractors                                   : 3
+ 26-bit subtractor                                     : 1
+ 3-bit subtractor                                      : 1
+ 5-bit adder                                           : 1
+# Registers                                            : 82
+ Flip-Flops                                            : 82
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1426 - The value init of the FF/Latch state hinder the constant cleaning in the block Filter.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1710 - FF/Latch <DOUT_0> (without init value) has a constant value of 0 in block <RAM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <DOUT_1> (without init value) has a constant value of 0 in block <RAM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <DOUT_2> (without init value) has a constant value of 0 in block <RAM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <DOUT_3> (without init value) has a constant value of 0 in block <RAM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <DOUT_4> (without init value) has a constant value of 0 in block <RAM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <DOUT_5> (without init value) has a constant value of 0 in block <RAM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <DOUT_6> (without init value) has a constant value of 0 in block <RAM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <DOUT_7> (without init value) has a constant value of 0 in block <RAM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ramCtrl/state> (without init value) has a constant value of 1 in block <topSlave>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:524 - All outputs of the instance <ramm> of the block <RAM> are unconnected in block <topSlave>.
+   This instance will be removed from the design along with all underlying logic
+WARNING:Xst:2677 - Node <ramCtrl/DIN_4> of sequential type is unconnected in block <topSlave>.
+WARNING:Xst:2677 - Node <ramCtrl/DIN_5> of sequential type is unconnected in block <topSlave>.
+WARNING:Xst:2677 - Node <ramCtrl/DIN_7> of sequential type is unconnected in block <topSlave>.
+WARNING:Xst:2677 - Node <ramCtrl/DIN_6> of sequential type is unconnected in block <topSlave>.
+
+Optimizing unit <topSlave> ...
+
+Optimizing unit <LCDI> ...
+
+Optimizing unit <Filter> ...
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM15> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM14> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM13> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM12> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM11> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM9> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM8> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM10> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM7> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM6> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM5> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM4> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM16>, <lcd/Mram_LCDRAM3> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <lcd/Mram_LCDRAM2>, <lcd/Mram_LCDRAM1> are equivalent, second RAM is removed
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block topSlave, actual ratio is 2.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 113
+ Flip-Flops                                            : 113
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : topSlave.ngr
+Top Level Output File Name         : topSlave
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 24
+
+Cell Usage :
+# BELS                             : 340
+#      GND                         : 1
+#      INV                         : 25
+#      LUT1                        : 1
+#      LUT2                        : 35
+#      LUT2_D                      : 3
+#      LUT2_L                      : 13
+#      LUT3                        : 33
+#      LUT3_D                      : 4
+#      LUT3_L                      : 5
+#      LUT4                        : 124
+#      LUT4_D                      : 12
+#      LUT4_L                      : 18
+#      MUXCY                       : 32
+#      MUXF5                       : 7
+#      VCC                         : 1
+#      XORCY                       : 26
+# FlipFlops/Latches                : 113
+#      FD                          : 28
+#      FDE                         : 46
+#      FDR                         : 1
+#      FDS                         : 30
+#      FDSE                        : 8
+# RAMS                             : 2
+#      RAM16X1D                    : 2
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 18
+#      IBUF                        : 3
+#      OBUF                        : 15
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-5 
+
+ Number of Slices:                      143  out of   4656     3%  
+ Number of Slice Flip Flops:            113  out of   9312     1%  
+ Number of 4 input LUTs:                277  out of   9312     2%  
+    Number used as logic:               273
+    Number used as RAMs:                  4
+ Number of IOs:                          24
+ Number of bonded IOBs:                  19  out of    232     8%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 115   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 7.846ns (Maximum Frequency: 127.458MHz)
+   Minimum input arrival time before clock: 3.565ns
+   Maximum output required time after clock: 4.134ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 7.846ns (frequency: 127.458MHz)
+  Total number of paths / destination ports: 8119 / 204
+-------------------------------------------------------------------------
+Delay:               7.846ns (Levels of Logic = 6)
+  Source:            lcd/state_FSM_FFd7 (FF)
+  Destination:       lcd/delay_25 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: lcd/state_FSM_FFd7 to lcd/delay_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              5   0.514   0.607  lcd/state_FSM_FFd7 (lcd/state_FSM_FFd7)
+     LUT3_D:I1->O          1   0.612   0.360  lcd/delay_or000411 (lcd/N38)
+     LUT4:I3->O            9   0.612   0.766  lcd/delay_or0004 (lcd/delay_or0004)
+     LUT4:I1->O            6   0.612   0.572  lcd/delay_mux0000<21>1 (lcd/N10)
+     LUT4_D:I3->O          9   0.612   0.700  lcd/delay_mux0000<11>21_2 (lcd/delay_mux0000<11>21_1)
+     LUT4:I3->O            1   0.612   0.387  lcd/delay_mux0000<18>23_SW9 (N84)
+     LUT4:I2->O            1   0.612   0.000  lcd/delay_mux0000<25>1 (lcd/delay_mux0000<25>)
+     FD:D                      0.268          lcd/delay_0
+    ----------------------------------------
+    Total                      7.846ns (4.454ns logic, 3.392ns route)
+                                       (56.8% logic, 43.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 22 / 22
+-------------------------------------------------------------------------
+Offset:              3.565ns (Levels of Logic = 2)
+  Source:            reset (PAD)
+  Destination:       slave/CLOCK1/fR_7 (FF)
+  Destination Clock: clk rising
+
+  Data Path: reset to slave/CLOCK1/fR_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   1.106   0.721  reset_IBUF (reset_IBUF)
+     LUT2:I0->O            8   0.612   0.643  slave/data/fR_not00011 (slave/data/fR_not0001)
+     FDE:CE                    0.483          slave/data/fR_0
+    ----------------------------------------
+    Total                      3.565ns (2.201ns logic, 1.364ns route)
+                                       (61.7% logic, 38.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 7 / 7
+-------------------------------------------------------------------------
+Offset:              4.134ns (Levels of Logic = 1)
+  Source:            lcd/control_1 (FF)
+  Destination:       control<1> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: lcd/control_1 to control<1>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              3   0.514   0.451  lcd/control_1 (lcd/control_1)
+     OBUF:I->O                 3.169          control_1_OBUF (control<1>)
+    ----------------------------------------
+    Total                      4.134ns (3.683ns logic, 0.451ns route)
+                                       (89.1% logic, 10.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 11.00 secs
+Total CPU time to Xst completion: 10.65 secs
+ 
+--> 
+
+Total memory usage is 281172 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   46 (   0 filtered)
+Number of infos    :   23 (   0 filtered)
+

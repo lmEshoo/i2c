@@ -26,10 +26,7 @@ output	 ne, pe;
 	 reg [7:0] fR;
 	 reg state=0;
 	 wire A0s, A01;
-//	 if(fR==0)
-		assign A0s=(fR==1);
-//	else 
-//		assign A0s=0;
+
 	assign A0s = (fR == 0);	 
 	assign A1s= (fR==8'hFF);
 	assign ne = A0s & fsig;

@@ -18,8 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module RAM( clk,WADD, DIN, W, RADD, DOUT,
-    );
+module RAM( clk,WADD, DIN, W, RADD, DOUT);
 input clk;
 input [4:0] WADD;
 input [7:0] DIN;
@@ -39,7 +38,5 @@ always @ (posedge clk)
 	if(W) begin RAM[WADD]<=DIN;
 					DOUT<=RAM[RADD];
 	end
-	
-
 
 endmodule

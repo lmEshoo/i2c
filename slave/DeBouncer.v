@@ -18,10 +18,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module DeBouncer(clk, spb, E
-    );
+module DeBouncer(clk, spb, E);
 input spb,clk;
-output E;
+output reg E;
 reg state=0;
 reg SDC;
 always @ (posedge clk)
@@ -35,7 +34,7 @@ end
 
 1://SD1
 begin
-SDC=SDC-1; 
+SDC<=SDC-1; 
 if(SDC==0) state<=2;
 else state<=1;
 end
@@ -54,14 +53,14 @@ end
 
 4://SD4
 begin
-SDC=SDC-1;
+SDC<=SDC-1;
 if(SDC==0) state<=5;
 else state<=4;
 end
 
 5://SD5
 begin
-E=1; state<=0;
+E<=1'b1; state<=0;
 
 end
 

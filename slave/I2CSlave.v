@@ -18,8 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module I2CSlave(clk,reset,scl,sda, DOUT, addr, datar,W
-    );
+module I2CSlave(clk,reset,scl,sda, DOUT, addr, datar,W,led);
 
 inout scl, sda;
 input clk, reset;
@@ -35,10 +34,12 @@ reg Nb,dir;
 reg state;
 wire fsda,fscl;
 wire cne,cpe,dne,dpe;
+output [3:0] led;
 
 Filter CLOCK1(scl, reset, clk ,fscl, cne, cpe);
 Filter data(sda, reset, clk ,fsda, dne,dpe);
 
+assign led=state;
 
 always @ (posedge clk)
 begin

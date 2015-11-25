@@ -1,0 +1,65 @@
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+par -w -intstyle ise -ol high -t 1 topSlave_map.ncd topSlave.ncd topSlave.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml topSlave.twx topSlave.ncd -o topSlave.twr topSlave.pcf 
+bitgen -intstyle ise -f topSlave.ut topSlave.ncd 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+par -w -intstyle ise -ol high -t 1 topSlave_map.ncd topSlave.ncd topSlave.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml topSlave.twx topSlave.ncd -o topSlave.twr topSlave.pcf -ucf topConst.ucf 
+bitgen -intstyle ise -f topSlave.ut topSlave.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+par -w -intstyle ise -ol high -t 1 topSlave_map.ncd topSlave.ncd topSlave.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml topSlave.twx topSlave.ncd -o topSlave.twr topSlave.pcf -ucf topConst.ucf 
+bitgen -intstyle ise -f topSlave.ut topSlave.ncd 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+par -w -intstyle ise -ol high -t 1 topSlave_map.ncd topSlave.ncd topSlave.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml topSlave.twx topSlave.ncd -o topSlave.twr topSlave.pcf -ucf topConst.ucf 
+bitgen -intstyle ise -f topSlave.ut topSlave.ncd 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+par -w -intstyle ise -ol high -t 1 topSlave_map.ncd topSlave.ncd topSlave.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml topSlave.twx topSlave.ncd -o topSlave.twr topSlave.pcf -ucf topConst.ucf 
+bitgen -intstyle ise -f topSlave.ut topSlave.ncd 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+par -w -intstyle ise -ol high -t 1 topSlave_map.ncd topSlave.ncd topSlave.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml topSlave.twx topSlave.ncd -o topSlave.twr topSlave.pcf -ucf topConst.ucf 
+bitgen -intstyle ise -f topSlave.ut topSlave.ncd 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+par -w -intstyle ise -ol high -t 1 topSlave_map.ncd topSlave.ncd topSlave.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml topSlave.twx topSlave.ncd -o topSlave.twr topSlave.pcf -ucf topConst.ucf 
+bitgen -intstyle ise -f topSlave.ut topSlave.ncd 
+xst -intstyle ise -ifn "H:/slave/topSlave.xst" -ofn "H:/slave/topSlave.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc topConst.ucf -p xc3s500e-fg320-5 topSlave.ngc topSlave.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o topSlave_map.ncd topSlave.ngd topSlave.pcf 
+par -w -intstyle ise -ol high -t 1 topSlave_map.ncd topSlave.ncd topSlave.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml topSlave.twx topSlave.ncd -o topSlave.twr topSlave.pcf -ucf topConst.ucf 
+bitgen -intstyle ise -f topSlave.ut topSlave.ncd 
